@@ -60,7 +60,7 @@ WHERE
 ;
 ```
 
-The following would run the sql with two parameters `:upper_limit` and `:dt` substituted for an int `10` and a datetime object `2017-01-01`, respectively:
+The following would run the sql with two parameters `:upper_limit` and `:dt` replaced with an int `10` and a datetime object `2017-01-01`, respectively:
 
 ``` shell
 $ qrnr --url ${url_for_db} --query /path/to/sql_above.sql --parameters 'dt:date=2017-01-01;upper_limit:int=10'
