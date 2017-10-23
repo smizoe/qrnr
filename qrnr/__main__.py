@@ -2,7 +2,7 @@
 
 from argparse import ArgumentParser, FileType
 from sqlalchemy import create_engine
-from .params import parse_parameters
+from .params import parse_parameters, PARSERS
 from .runner import run_query
 
 
@@ -15,7 +15,8 @@ def parse_args(argv):
                         default={},
                         help="""specifies the parameters to be used in running queries.
                         the argument to this option is in the following form: name1:type1=value1[;name2;type2=value2;...].
-                        """)
+                        the supported parameter types are: [{}]
+                        """.format(', '.join(PARSERS.keys())))
     parser.add_argument("--url", required=True, help="""Python DBAPI url. This is used to connect the database.""")
     parser.add_argument("-q", "--query", type=FileType('r'),
                         required=True, help="the query to run. you may put multiple statement. we accept 'named' format as paramstyle")
